@@ -1,27 +1,19 @@
-//the source in report.json should be read
-//and then transformed to the format found in report_cucumber.json
-
-//write a function to this transformation
+#!/usr/bin/env node
 
 import * as fs from 'fs';
 import { CucumberTest } from './models/cucumberTest';
 import { CucumberTestDetails } from './models/cucumberTestDetails';
+import * as path from 'path';
 
 export function transformReport() {
 	//read the report.json file
+	const reportPath = path.join(process.cwd(), 'src', 'report.json');
 	const report = fs.readFileSync('src/report.json', 'utf8');
 
 	//init a a new object to store the transformed data
 	const reportObj = JSON.parse(report);
 
 	for (const suite of reportObj.suites) {
-		// let cucumberTestDetails: CucumberTestDetails = {
-		// 	keyword: 'Scenario Outline',
-		// 	type: 'scenario',
-		// 	tags: [],
-		// 	steps: [],
-		// };
-
 		let cucumberReport: CucumberTest = {
 			elements: [],
 		};
@@ -63,17 +55,19 @@ export function transformReport() {
 					name: step.title,
 					result: {
 						status: stepStatus,
-						duration: step.duration,
+						duration: step.duration * 1000000,
 					},
 				});
 			}
 
-			// console.log(cucumberTestDetails);
 			cucumberReport.elements.push(cucumberTestDetails);
-			// console.log(JSON.stringify(cucumberReport));
 		}
-		// console.log(cucumberReport);
-		console.log(JSON.stringify(cucumberReport));
+		console.log(JSON.stringify(Array.of(cucumberReport)));
+
+		fs.writeFileSync(
+			'output/report_cucumber.json',
+			JSON.stringify(Array.of(cucumberReport))
+		);
 	}
 }
 

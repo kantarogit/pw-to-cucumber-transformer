@@ -1,15 +1,21 @@
 {
-  "name": "json-to-cucumber",
-  "version": "1.0.0",
-  "description": "playwright json report to cucumber transformer",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Filip Kantardjioski",
-  "license": "ISC",
-  "devDependencies": {
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
-  }
+	"name": "json-to-cucumber",
+	"version": "1.0.4",
+	"description": "playwright json report to cucumber transformer",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bin": {
+		"cucumberizeJson": "./src/transformer.js"
+	},
+	"files": [
+		"src/transformer.js"
+	],
+	"author": "Filip Kantardjioski",
+	"license": "ISC",
+	"devDependencies": {
+		"ts-node": "^10.9.2",
+		"typescript": "^5.3.3"
+	}
 }
