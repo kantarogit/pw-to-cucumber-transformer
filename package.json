@@ -1,6 +1,6 @@
 {
 	"name": "json-to-cucumber",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "playwright json report to cucumber transformer",
 	"main": "index.js",
 	"scripts": {
@@ -15,7 +15,6 @@
 	"author": "Filip Kantardjioski",
 	"license": "ISC",
 	"devDependencies": {
-		"ts-node": "^10.9.2",
 		"typescript": "^5.3.3"
 	}
 }
