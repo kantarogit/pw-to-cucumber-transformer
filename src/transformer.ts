@@ -13,11 +13,11 @@ export function transformReport() {
 	//init a a new object to store the transformed data
 	const reportObj = JSON.parse(report);
 
-	for (const suite of reportObj.suites) {
-		let cucumberReport: CucumberTest = {
-			elements: [],
-		};
+	let cucumberReport: CucumberTest = {
+		elements: [],
+	};
 
+	for (const suite of reportObj.suites) {
 		//iterate through the suites.specs and set the title
 		for (const spec of suite.specs) {
 			const cucumberTestDetails: CucumberTestDetails = {
@@ -38,14 +38,19 @@ export function transformReport() {
 			for (const step of spec.tests[0].results[0].steps) {
 				if (step.title.startsWith('GIVEN')) {
 					step.keyword = 'Given';
+					step.title = step.title.replace('GIVEN ', '');
 				} else if (step.title.startsWith('WHEN')) {
 					step.keyword = 'When';
+					step.title = step.title.replace('WHEN ', '');
 				} else if (step.title.startsWith('THEN')) {
 					step.keyword = 'Then';
+					step.title = step.title.replace('THEN ', '');
 				} else if (step.title.startsWith('AND')) {
 					step.keyword = 'And';
+					step.title = step.title.replace('AND ', '');
 				} else if (step.title.startsWith('BUT')) {
 					step.keyword = 'But';
+					step.title = step.title.replace('BUT ', '');
 				}
 
 				const stepStatus = step.error ? 'failed' : 'passed';

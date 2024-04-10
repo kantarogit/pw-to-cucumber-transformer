@@ -2,14 +2,14 @@
 
 ## Description
 
-Json-to-Cucumber is a utility package that transforms standard JSON reports generated from Playwright test runner, into Cucumber JSON reports that can be easily imported to test management platforms like Xray. It's designed in cases you dont want to implement full layer of Cucumber framework in your test automation, but you still want to have the scnearios documented in Gherkin syntax.
+Json-to-Cucumber is a utility package that transforms standard JSON reports generated from Playwright test runner, into Cucumber JSON reports that can be easily imported to test management platforms like Xray. It's designed in cases you dont want to implement full layer of Cucumber framework in your test automation, but you still want to have the scenarios documented in Gherkin syntax.
 
 ## Installation
 
-To install CucumberizeJson, run the following command in your project directory:
+To install json-to-cucumber, run the following command in your project directory:
 
 ```bash
-npm install cucumberize-json
+npm install json-to-cucumber
 ```
 
 This command will look for a report.json file in the src/ directory of your project, transform it into a Cucumber JSON report, and output the result.
