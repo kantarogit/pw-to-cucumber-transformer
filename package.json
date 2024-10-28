@@ -1,6 +1,6 @@
 {
 	"name": "json-to-cucumber",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "playwright json report to cucumber transformer",
 	"main": "index.js",
 	"scripts": {

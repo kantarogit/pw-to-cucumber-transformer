@@ -35,6 +35,7 @@ export function transformReport() {
 				});
 			}
 
+			if(spec.tests[0].results[0].status !== 'skipped') {
 			for (const step of spec.tests[0].results[0].steps) {
 				if (step.title.startsWith('GIVEN')) {
 					step.keyword = 'Given';
@@ -53,7 +54,7 @@ export function transformReport() {
 					step.title = step.title.replace('BUT ', '');
 				}
 
-				const stepStatus = step.error ? 'failed' : 'passed';
+				let stepStatus = step.error ? 'failed' : 'passed';
 
 				cucumberTestDetails.steps?.push({
 					keyword: step.keyword,
@@ -64,6 +65,16 @@ export function transformReport() {
 					},
 				});
 			}
+		} else {
+			cucumberTestDetails.steps?.push({
+				keyword: 'Given',
+				name: 'No steps found',
+				result: {
+					status: 'skipped',
+					duration: 0,
+				},
+		});
+	}
 
 			cucumberReport.elements.push(cucumberTestDetails);
 		}
